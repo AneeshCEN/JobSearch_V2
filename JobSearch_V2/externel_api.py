@@ -58,6 +58,8 @@ def call_api(dict_input):
     request.query = dict_input['messageText']
     response = yaml.load(request.getresponse())
     pp = pprint.PrettyPrinter(indent=4)
+    entity_json = response['result']['parameters']
+    pp.pprint(entity_json)
     if response['result']['metadata']['intentName'] == 'login':
         if response['result']['parameters']['account'] == '':
             pp.pprint(response['result']['fulfillment']['messages'][0]['speech'])
@@ -68,9 +70,32 @@ def call_api(dict_input):
             out_dict['messageText'].append(employer_signin)
             return out_dict
         else:
-            out_dict['messageText'].append(employer_signin)
+            out_dict['messageText'].append(jobseeker_signin)
             return out_dict
             
+    elif response['result']['metadata']['intentName'] == 'register':
+        if response['result']['parameters']['account'] == '':
+            pp.pprint(response['result']['fulfillment']['messages'][0]['speech'])
+            out_dict['messageText'].append(response['result']['fulfillment']['messages'][0]['speech'])
+            out_dict["plugin"] = {'name': 'autofill', 'type': 'items', 'data': sign_in}
+            return out_dict
+        elif response['result']['parameters']['account'] == 'employer':
+            out_dict['messageText'].append(employer_register)
+            return out_dict
+        else:
+            out_dict['messageText'].append(jobseeker_register)
+            return out_dict
+    elif response['result']['metadata']['intentName'] == 'jobsearch':
+        if entity_json['job_category'] == []:
+            out_dict['messageText'].append(ask_category)
+            out_dict["plugin"] = {'name': 'autofill', 'type': 'items', 'data': categories}
+            return out_dict
+        elif entity_json['career_level'] == []:
+            out_dict['messageText'].append(ask_career_level)
+            out_dict["plugin"] = {'name': 'autofill', 'type': 'items', 'data': career_level}
+            return out_dict
+        
+    
             
             
         
@@ -80,6 +105,7 @@ def call_api(dict_input):
     
 
     return out_dict
+
 
 
 
