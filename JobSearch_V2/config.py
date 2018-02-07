@@ -28,7 +28,7 @@ https://www.jobsireland.ie/#/employer-register']
 
 jobseeker_register = jobseeker_signin
 
-ask_category = ['Which category of job would you preffer ?']
+ask_category = 'Which category of job would you preffer ?'
 
 categories = ['All category', 'Managers', 'Professionals', 'Technicians and associate professional', '\
 Clerical Support Workers', 'Service and Sales workers', '\
@@ -45,7 +45,18 @@ Executive', 'Senior executive']
 
 
 
+ask_vacancy_type = ['Which type of vacancies you are interested into?']
+vacancy_type = ['Paid Position', 'Self Employed', 'Community Employment Programme']
 
+ask_location = ['Which is your preffered location?']
+locations= ['county westmeath', 'county kerry', 'county louth', '\
+county cavan', 'county donegal', 'county wicklow', 'county monaghan','\
+county offaly', 'county clare', 'county cork']
+
+
+
+conclusions = ['These are the results I could gather based on the in\
+formation you provided']
     
 host_inventory = "192.168.0.28"
 user_inventory="user"
