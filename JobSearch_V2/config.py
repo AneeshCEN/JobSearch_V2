@@ -3,7 +3,9 @@ Created on Apr 24, 2017
 
 @author: aneesh.c
 '''
-CLIENT_ACCESS_TOKEN = '27c254f4b35a426d8fe40814327540c6'
+#CLIENT_ACCESS_TOKEN = '27c254f4b35a426d8fe40814327540c6'
+
+CLIENT_ACCESS_TOKEN = '27c254f4b35a426d8f0814327540c5'
 
 
 reply_something_else = ['OK, please tell me in your own words \
